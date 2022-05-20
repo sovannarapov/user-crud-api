@@ -6,7 +6,6 @@ exports.createUser = async (req, res) => {
     last_name: req.body.last_name,
     email: req.body.email,
   });
-
   try {
     const dataToSave = await data.save();
     res.status(200).json(dataToSave);
@@ -30,5 +29,28 @@ exports.getUserDetail = async (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const options = { new: true };
+    const result = await User.findByIdAndUpdate(id, updatedData, options);
+    res.send(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await User.findByIdAndDelete(id);
+    const fullName = data.first_name + " " + data.last_name;
+    res.send(`A user name ${fullName} has been deleted...`);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
