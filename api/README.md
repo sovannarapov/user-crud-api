@@ -12,4 +12,4 @@ npm start
 
 ### Database setup
 ```
-Change DATABASE_URL to your mongodb local URL inside .env file
+Change DATABASE configuration to your mongodb configuration inside .env file
