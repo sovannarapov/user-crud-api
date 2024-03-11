@@ -14,7 +14,7 @@ router
   .post("/users", (req, res) =>
     userController.createUser(req.body).then((data) => res.json(data)),
   )
-  .patch("/users", (req, res) =>
+  .put("/users", (req, res) =>
     userController.updateUser(req.body).then((data) => res.json(data)),
   )
   .delete("/users/:id", (req, res) =>
