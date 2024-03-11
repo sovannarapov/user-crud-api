@@ -14,7 +14,7 @@ export default class UserService {
   }
 
   async getUserById(userId) {
-    return this.userRepo.getUserDetail(userId);
+    return this.userRepo.getUserById(userId);
   }
 
   async updateUser(user) {

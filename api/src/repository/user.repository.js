@@ -88,7 +88,7 @@ export default class UserRepository {
     let statusCode;
 
     try {
-      data = await User.updateOne(user);
+      data = await User.findOneAndUpdate({ "_id": user._id }, user);
       message = "Updated user successfully.";
       statusCode = 200;
     } catch (err) {

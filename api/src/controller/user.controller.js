@@ -14,7 +14,7 @@ export default class UserController {
   }
 
   async getUserById(userId) {
-    return this.userService.getUserDetail(userId);
+    return this.userService.getUserById(userId);
   }
 
   async updateUser(user) {
