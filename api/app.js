@@ -11,12 +11,12 @@ const swaggerDocument = parse(file);
 
 dotenv.config();
 
+app.use(express.json());
 app.use(
   "/api/docs",
   serve,
   setup(swaggerDocument)
 );
-
 app.use("/api", router);
 
 app.listen(process.env.APP_PORT, () => {
