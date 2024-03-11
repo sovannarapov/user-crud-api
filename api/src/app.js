@@ -6,7 +6,7 @@ import { serve, setup } from "swagger-ui-express";
 import router from "./routes/user.js";
 
 const app = express();
-const file = readFileSync('./swagger.yaml', 'utf8');
+const file = readFileSync('src/public/doc/app/swagger.yaml', 'utf8');
 const swaggerDocument = parse(file);
 
 dotenv.config();

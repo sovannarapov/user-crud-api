@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+    version: 1.0.0
+    title: User Crud App Api
+    description: |
+        This is documentatin for the user crud app.
+basePath: api
+paths:
+    /users:
+        get:
+            summary: Get all the users api
+            tags:
+                - user
+            description: |
+                Get all the users api
+            responses:
+                "200":
+                    description: Successful
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - success
+                                    - message
+                                    - code
+                                    - data
+                                properties:
+                                    success:
+                                        type: boolean
+                                        description: is success
+                                        example: true
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                                    code:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    data:
+                                        $ref: "#/definitions/usersResponse"
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/definitions/InvalidResponse"
+    /users/{id}:
+        get:
+            summary: Get a user detail
+            tags:
+                - user
+            description: |
+                Get a user detail
+            parameters:
+                - in: header
+                  name: Accept-Language
+                  description: en, km
+                  schema:
+                      type: string
+                      example: en
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - success
+                                    - message
+                                    - code
+                                    - data
+                                properties:
+                                    success:
+                                        type: boolean
+                                        description: is success
+                                        example: true
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                                    code:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    data:
+                                        $ref: "#/components/responseSchemas/LogoutResponse"
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/responseSchemas/GeneralErrorResponse"

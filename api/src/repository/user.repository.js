@@ -1,7 +1,7 @@
-import { _connect } from "../config/db.config.js";
+import { _connect } from "../config/index.js";
 import User from "../model/user.model.js";
 import { hash as _hash } from 'bcrypt';
-import validatePassword from '../lib/validation/password.js';
+import validatePassword from '../lib/core/validation/password.js';
 
 export default class UserRepository {
   constructor() {
