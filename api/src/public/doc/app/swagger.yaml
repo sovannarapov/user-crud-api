@@ -2,8 +2,7 @@ openapi: 3.0.0
 info:
     version: 1.0.0
     title: User Crud App Api
-    description: |
-        This is documentatin for the user crud app.
+    description: This is documentatin for the user crud app.
 basePath: api
 paths:
     /users:
@@ -11,7 +10,7 @@ paths:
             summary: Get all the users api
             tags:
                 - user
-            description: |
+            description:
                 Get all the users api
             responses:
                 "200":
@@ -20,74 +19,265 @@ paths:
                         application/json:
                             schema:
                                 required:
-                                    - success
+                                    - statusCode
                                     - message
-                                    - code
                                     - data
                                 properties:
-                                    success:
-                                        type: boolean
-                                        description: is success
-                                        example: true
+                                    statusCode:
+                                        type: number
+                                        description: response code
+                                        example: 200
                                     message:
                                         type: string
                                         description: message
                                         example: message
-                                    code:
-                                        type: number
-                                        description: response code
-                                        example: 200
                                     data:
-                                        $ref: "#/definitions/usersResponse"
-                "4xx":
-                    description: NG
-                    content:
-                        application/json:
-                            schema:
-                                $ref: "#/definitions/InvalidResponse"
-    /users/{id}:
-        get:
-            summary: Get a user detail
-            tags:
-                - user
-            description: |
-                Get a user detail
-            parameters:
-                - in: header
-                  name: Accept-Language
-                  description: en, km
-                  schema:
-                      type: string
-                      example: en
-            responses:
-                "200":
-                    description: OK
-                    content:
-                        application/json:
-                            schema:
-                                required:
-                                    - success
-                                    - message
-                                    - code
-                                    - data
-                                properties:
-                                    success:
-                                        type: boolean
-                                        description: is success
-                                        example: true
-                                    message:
-                                        type: string
-                                        description: message
-                                        example: message
-                                    code:
-                                        type: number
-                                        description: response code
-                                        example: 200
-                                    data:
-                                        $ref: "#/components/responseSchemas/LogoutResponse"
+                                        $ref: "#/components/responseSchemas/UserListResponse"
                 "4xx":
                     description: NG
                     content:
                         application/json:
                             schema:
                                 $ref: "#/components/responseSchemas/GeneralErrorResponse"
+        post:
+            summary: Create a user api
+            tags:
+                - user
+            description:
+                Create a user with request body
+            requestBody:
+                $ref: "#/components/requestBodies/UserBody"
+            responses:
+                "200":
+                    description: Successful
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - statusCode
+                                    - message
+                                    - data
+                                properties:
+                                    statusCode:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                                    data:
+                                        $ref: "#/components/responseSchemas/UserResponse"
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/responseSchemas/GeneralErrorResponse"
+        put:
+            summary: Update a user api
+            tags:
+                - user
+            description:
+                Update a user with request body
+            requestBody:
+                $ref: "#/components/requestBodies/UserUpdateBody"
+            responses:
+                "200":
+                    description: Successful
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - statusCode
+                                    - message
+                                    - data
+                                properties:
+                                    statusCode:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/responseSchemas/GeneralErrorResponse"
+    /users/{_id}:
+        get:
+            summary: Get a user detail api
+            tags:
+                - user
+            description:
+                Get a user detail
+            parameters:
+                - in: path
+                  name: _id
+                  description: _id of the user
+                  schema:
+                      type: string
+                      example: 65ef129eb851a3c07ac073e4
+            responses:
+                "200":
+                    description: Successful
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - statusCode
+                                    - message
+                                    - data
+                                properties:
+                                    statusCode:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                                    data:
+                                        $ref: "#/components/responseSchemas/UserResponse"
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/responseSchemas/GeneralErrorResponse"
+        delete:
+            summary: Delete a user api
+            tags:
+                - user
+            description:
+                Delete a user with _id
+            parameters:
+                - in: path
+                  name: _id
+                  description: _id of the user
+                  schema:
+                      type: string
+                      example: 65ef129eb851a3c07ac073e4
+            responses:
+                "200":
+                    description: Successful
+                    content:
+                        application/json:
+                            schema:
+                                required:
+                                    - statusCode
+                                    - message
+                                    - data
+                                properties:
+                                    statusCode:
+                                        type: number
+                                        description: response code
+                                        example: 200
+                                    message:
+                                        type: string
+                                        description: message
+                                        example: message
+                "4xx":
+                    description: NG
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/responseSchemas/GeneralErrorResponse"
+servers:
+    - url: /api
+components:
+    requestBodies:
+        UserBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/requestParams/UserParam"
+        UserUpdateBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/requestParams/UserUpdateParam"
+    requestParams:
+        UserParam:
+            type: object
+            required:
+                - first_name
+                - last_name
+                - email
+                - password
+            properties:
+                first_name:
+                    type: string
+                    format: text
+                last_name:
+                    type: string
+                    format: text
+                email:
+                    type: string
+                    description: email
+                    example: abc@gmail.com
+                password:
+                    type: string
+                    description: password
+                    example: "123456aA"
+        UserUpdateParam:
+            type: object
+            required:
+                - _id
+                - first_name
+                - last_name
+                - email
+            properties:
+                _id:
+                    type: string
+                    format: text
+                first_name:
+                    type: string
+                    format: text
+                last_name:
+                    type: string
+                    format: text
+                email:
+                    type: string
+                    description: email
+                    example: abc@gmail.com
+    responseSchemas:
+        UserResponse:
+            type: object
+            properties:
+                _id:
+                    type: string
+                first_name:
+                    type: string
+                last_name:
+                    type: string
+                email:
+                    type: string
+                created_at:
+                    type: string
+                    format: date-time
+                updated_at:
+                     type: string
+                     format: date-time
+                __v:
+                    type: integer
+        UserListResponse:
+            type: array
+            items:
+                $ref: "#/components/responseSchemas/UserResponse"
+        GeneralErrorResponse:
+            description: "Error Message"
+            properties:
+                statusCode:
+                    example: 4xx
+                    type: string
+                message:
+                    example: message
+                    type: string
+            required:
+                - statusCode
+                - message
+
