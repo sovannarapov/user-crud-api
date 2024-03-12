@@ -2,7 +2,7 @@ import UserRepository from '../repository/user.repository.js'
 
 export default class UserService {
   constructor() {
-    this.userRepo = new UserRepository();
+    this.userRepo = new UserRepository;
   }
 
   async createUser(user) {
