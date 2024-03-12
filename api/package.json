@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/app.js"
+    "dev": "npx nodemon src/app.js"
   },
   "author": "sovannara",
   "license": "ISC",
