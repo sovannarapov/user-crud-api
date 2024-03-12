@@ -5,20 +5,25 @@ const userController = new UserController
 const router = new Router()
 
 router
-  .get("/users", (_req, res) =>
-    userController.getUsers().then((data) => res.json(data)),
-  )
-  .get("/users/:id", (req, res) =>
-    userController.getUserById(req.params.id).then((data) => res.json(data)),
-  )
-  .post("/users", (req, res) =>
-    userController.createUser(req.body).then((data) => res.json(data)),
-  )
-  .put("/users", (req, res) =>
-    userController.updateUser(req.body).then((data) => res.json(data)),
-  )
-  .delete("/users/:id", (req, res) =>
-    userController.deleteUser(req.params.id).then((data) => res.json(data)),
-  )
+  .get("/users", async (req, res) => {
+    const data = await userController.getUsers()
+    res.json(data)
+  })
+  .get("/users/:id", async (req, res) => {
+    const data = await userController.getUserById(req.params.id)
+    res.json(data)
+  })
+  .post("/users", async (req, res) => {
+    const data = await userController.createUser(req.body)
+    res.json(data)
+  })
+  .put("/users", async (req, res) => {
+    const data = await userController.updateUser(req.body)
+    res.json(data)
+  })
+  .delete("/users/:id", async (req, res) => {
+    const data = await userController.deleteUser(req.params.id)
+    res.json(data)
+  })
 
 export default router
