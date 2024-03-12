@@ -88,6 +88,7 @@ export default class UserRepository {
     let statusCode
 
     try {
+      if (user.password) delete user.password
       data = await User.findByIdAndUpdate({ _id: user._id }, { ...user })
       message = "Updated user successfully."
       statusCode = 200
