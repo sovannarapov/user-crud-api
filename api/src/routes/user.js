@@ -1,8 +1,8 @@
-import { Router } from "express";
-import UserController from '../controller/user.controller.js';
+import { Router } from "express"
+import UserController from '../controller/user.controller.js'
 
-const userController = new UserController;
-const router = new Router();
+const userController = new UserController
+const router = new Router()
 
 router
   .get("/users", (_req, res) =>
@@ -19,6 +19,6 @@ router
   )
   .delete("/users/:id", (req, res) =>
     userController.deleteUser(req.params.id).then((data) => res.json(data)),
-  );
+  )
 
-export default router;
+export default router

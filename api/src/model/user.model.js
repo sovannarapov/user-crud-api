@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const { Schema, model } = mongoose;
+import mongoose from 'mongoose'
+const { Schema, model } = mongoose
 
 const userSchema = new Schema(
   {
@@ -34,17 +34,17 @@ const userSchema = new Schema(
       updatedDate: 'updated_at'
     }
   }
-);
+)
 
 userSchema.methods.toJSON = function () {
-  const user = this;
-  const userObject = user.toObject();
+  const user = this
+  const userObject = user.toObject()
 
-  delete userObject.password;
+  delete userObject.password
 
-  return userObject;
+  return userObject
 }
 
-const User = model("users", userSchema);
+const User = model("users", userSchema)
 
-export default User;
+export default User
