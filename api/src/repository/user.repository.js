@@ -2,6 +2,7 @@ import { _connect } from "../config/index.js"
 import User from "../model/user.model.js"
 import { hash as _hash } from 'bcrypt'
 import validatePassword from '../lib/validation/password.js'
+import logger from '../lib/logger/logger.js'
 
 export default class UserRepository {
   constructor() {
@@ -28,7 +29,7 @@ export default class UserRepository {
     } catch (err) {
       statusCode = 400
       message = "Created failed."
-      console.error("Error:::" + err)
+      logger.error("Error:::" + err)
     }
 
     return {
@@ -50,7 +51,7 @@ export default class UserRepository {
     } catch (err) {
       statusCode = 400
       message = "Get all users failed."
-      console.error("Error:::" + err)
+      logger.error("Error:::" + err)
     }
 
     return {
@@ -72,7 +73,7 @@ export default class UserRepository {
     } catch (error) {
       statusCode = 400
       message = "Get a user failed."
-      console.error("Error:::" + err)
+      logger.error("Error:::" + err)
     }
 
     return {
@@ -95,7 +96,7 @@ export default class UserRepository {
     } catch (err) {
       statusCode = 400
       message = "Updated failed."
-      console.error("Error:::" + err)
+      logger.error("Error:::" + err)
     }
 
     return {
@@ -116,7 +117,7 @@ export default class UserRepository {
     } catch (err) {
       statusCode = 400
       message = "Deleted a user failed."
-      console.error("Error:::" + err)
+      logger.error("Error:::" + err)
     }
 
     return {
