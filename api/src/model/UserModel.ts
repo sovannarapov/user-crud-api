@@ -28,22 +28,22 @@ const userSchema = new Schema(
       min: 6,
     },
   },
-  {
-    timestamps: {
-      createdDate: 'created_at',
-      updatedDate: 'updated_at'
-    }
-  }
+  // {
+  //   timestamps: {
+  //     createdDate: 'created_at',
+  //     updatedDate: 'updated_at'
+  //   }
+  // }
 )
 
-userSchema.methods.toJSON = function () {
-  const user = this
-  const userObject = user.toObject()
-
-  delete userObject.password
-
-  return userObject
-}
+// userSchema.methods.toJSON = function () {
+//   const user = this
+//   const userObject = user.toObject()
+//
+//   delete userObject.password
+//
+//   return userObject
+// }
 
 const User = model("users", userSchema)
 

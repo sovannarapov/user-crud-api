@@ -1,4 +1,4 @@
-import validatePassword from '../../src/lib/validation/password.js'
+import validatePassword from '../../src/lib/core/validations/password'
 
 test("return false if given an empty string", () => {
   expect(validatePassword("")).toBe(false)
