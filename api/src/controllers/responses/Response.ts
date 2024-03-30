@@ -1,4 +1,4 @@
-export class Response<ResponseObject> {
+export class Response {
     public statusCode: any;
     public message: string;
     public data: object;
