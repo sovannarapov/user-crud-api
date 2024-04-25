@@ -1,4 +1,4 @@
-import { MIN_LENGTH } from '../helper/password.js'
+import { MIN_LENGTH } from '../constants/password'
 
 export default function validatePassword(password) {
   const validLength = password.length >= MIN_LENGTH

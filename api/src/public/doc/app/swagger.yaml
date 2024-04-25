@@ -107,7 +107,7 @@ paths:
                         application/json:
                             schema:
                                 $ref: "#/components/responseSchemas/GeneralErrorResponse"
-    /users/{_id}:
+    /users/{id}:
         get:
             summary: Get a user detail api
             tags:
@@ -116,8 +116,8 @@ paths:
                 Get a user detail
             parameters:
                 - in: path
-                  name: _id
-                  description: _id of the user
+                  name: id
+                  description: id of the user
                   schema:
                       type: string
                       example: 65ef129eb851a3c07ac073e4
@@ -153,11 +153,11 @@ paths:
             tags:
                 - user
             description:
-                Delete a user with _id
+                Delete a user with id
             parameters:
                 - in: path
-                  name: _id
-                  description: _id of the user
+                  name: id
+                  description: id of the user
                   schema:
                       type: string
                       example: 65ef129eb851a3c07ac073e4
@@ -226,12 +226,12 @@ components:
         UserUpdateParam:
             type: object
             required:
-                - _id
+                - id
                 - first_name
                 - last_name
                 - email
             properties:
-                _id:
+                id:
                     type: string
                     format: text
                 first_name:
@@ -248,7 +248,7 @@ components:
         UserResponse:
             type: object
             properties:
-                _id:
+                id:
                     type: string
                 first_name:
                     type: string

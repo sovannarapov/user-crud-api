@@ -1,8 +1,8 @@
 import morgan from "morgan"
-import logger from "../logger/logger.js"
+import logger from "../../../config/logger"
 
 const stream = {
-  write: (message) => logger.http(message)
+  write: (message: string) => logger.http(message)
 }
 
 const skip = () => {

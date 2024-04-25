@@ -1,0 +1,21 @@
+{
+  "type": "mongodb",
+  "host": "127.0.0.1",
+  "database": "db_user",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "src/entities/*.ts"
+  ],
+  "subscribers": [
+    "src/subscribers/*.ts"
+  ],
+  "migrations": [
+    "src/migrations/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/entities",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+  }
+}
